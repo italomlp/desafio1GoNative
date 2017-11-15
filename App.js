@@ -1,31 +1,55 @@
 import React, { Component } from 'react';
 import {
-  Platform,
-  StyleSheet,
+  ScrollView,
   Text,
-  View
+  View,
+  StyleSheet,
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import './config/ReactotronConfig';
+
+import Post from './components/Post';
 
 export default class App extends Component<{}> {
+  state = {
+    posts: [
+      {
+        id: 0,
+        title: 'Aprendendo React Native',
+        author: 'Italo Menezes',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+      {
+        id: 1,
+        title: 'Aprendendo React Native',
+        author: 'Italo Menezes',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+      {
+        id: 2,
+        title: 'Aprendendo React Native',
+        author: 'Italo Menezes',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+      {
+        id: 3,
+        title: 'Aprendendo React Native',
+        author: 'Italo Menezes',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+    ],
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.header}>
+          <Text style={styles.title}>GoNative App</Text>
+        </View>
+
+        <ScrollView style={styles.body}>
+          { this.state.posts.map(post => <Post key={post.id} post={post} />) }
+        </ScrollView>
       </View>
     );
   }
@@ -34,18 +58,23 @@ export default class App extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  header: {
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#DA6C6C',
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 100,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
+  title: {
+    fontWeight: 'bold',
     color: '#333333',
-    marginBottom: 5,
   },
+  body: {
+    backgroundColor: '#EE7777',
+    padding: 20,
+  }
 });
