@@ -15,14 +15,14 @@ const Post = ({ post }) => (
   </View>
 );
 
-{/*Post.propTypes = {
+Post.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     author: PropTypes.string,
     description: PropTypes.string,
   }).isRequired,
-};*/}
+};
 
 
 const styles = StyleSheet.create({
